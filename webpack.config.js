@@ -3,22 +3,22 @@
 const webpack = require('webpack')
 const path = require('path')
 
+console.log(process.env.NODE_ENV);
 const extractCommons = new webpack.optimize.CommonsChunkPlugin({
   name: 'commons',
   filename: 'common.js'
 })
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractCSS = new ExtractTextPlugin('[name].bundle.css');
+let entry = [
+    'babel-polyfill',
+    'whatwg-fetch',
+    './index'
+];
 
 const config = {
   devtool: 'source-map',
   context: path.resolve(__dirname, 'src'),
-  entry: [
-    'whatwg-fetch',
-    'babel-polyfill',
-    './index'
-  ],
+  entry: entry,
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
@@ -51,8 +51,12 @@ const config = {
     ]
   },
   plugins: [
-    extractCommons
-
+    extractCommons,
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': `"production"`
+        }
+    })
   ]
 
 }
