@@ -20,6 +20,12 @@ const START_FETCH_DUST   = 'dust/START_FETCH_DUST';
 const SUCCESS_FETCH_DUST = 'dust/SUCCESS_FETCH_DUST';
 const FAILED_FETCH_DUST  = 'dust/FAILED_FETCH_DUST';
 
+export const ActionTypes = {
+	START_FETCH_DUST,
+	SUCCESS_FETCH_DUST,
+	FAILED_FETCH_DUST
+}
+
 
 /* Action creators */
 export const startFetchDust   = createAction(START_FETCH_DUST);
@@ -41,7 +47,7 @@ export const getDust = (region) => async (dispatch) => {
 		if(data.val === "") throw "Emtpy Data";
 		dispatch(successFetchDust({ ...data, region }));
 	}catch(e){
-		dispatch(failedFetchDust({message: e}));
+		dispatch(failedFetchDust({message: "error"}));
 	}
 }
 
