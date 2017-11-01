@@ -1,39 +1,60 @@
-var path = require('path');
-var webpack = require('webpack');
+// webpack.config.js
 
-module.exports = {
-  devtool: 'inline-source-map',
+const webpack = require('webpack')
+const path = require('path')
+
+const extractCommons = new webpack.optimize.CommonsChunkPlugin({
+  name: 'commons',
+  filename: 'common.js'
+})
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCSS = new ExtractTextPlugin('[name].bundle.css');
+
+const config = {
+  devtool: 'source-map',
+  context: path.resolve(__dirname, 'src'),
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    'react-hot-loader/patch',
+    'whatwg-fetch',
     'babel-polyfill',
-    './src/index'
+    './index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: './dist/'
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
+    filename: '[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
+        use: [{
+          loader: 'babel-loader'
+        }]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.(svg|png|jpg)$/,
+        use: [{
+          loader: 'url-loader',
+          options: { limit: 10000 } // 10k 이하 이미지는 base64 문자열로 변환
+        }]
+      }
+    ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/,
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.css$/,
-      loader: "style-loader!css-loader"
-    },{ 
-      test: /\.svg$/,
-      loader: 'file-loader'
-    }]
-  }
-};
+    extractCommons
+
+  ]
+
+}
+
+module.exports = config
