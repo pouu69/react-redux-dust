@@ -17,7 +17,8 @@
 $ npm install
 ```
 
-## running
+## Getting Start
+
 ```
 // development ( Hot loader )
 $ npm start
@@ -28,3 +29,7 @@ $ npm run build
 // test
 $ npm run tests
 ```
+
+## Other Version
+
+- If you change to another branch, you can use the redux-saga version.
