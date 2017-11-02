@@ -27,7 +27,7 @@ $ npm start
 $ npm run build
 
 // test
-$ npm run tests
+$ npm run test
 ```
 
 ## Other Version
