@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { Head, DustInfo, RegionInput, Spinner } from '../components';
 
-import * as dustActions from '../module/dust';
+import * as dustActions from '../module/dust-saga';
 
 import '../css/main.css';
 
@@ -23,7 +23,7 @@ class DustApp extends Component {
 
 	fetchDust(region) { 
 		const { DustActions } = this.props;
-		DustActions.getDust(region);
+		DustActions.requestFetchDust(region);
 	}
 
 	render() {
