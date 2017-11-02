@@ -6,8 +6,6 @@
 ## Spec
 - react
 - redux / react-redux / redux-saga
-- jest
-- chai/expect
 - webpack v2
 - ES6 / 7 (async,await)
 
@@ -23,9 +21,6 @@ $ npm start
 
 // production
 $ npm run build
-
-// test
-$ npm run tests
 ```
 
 ## Other Version
