@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "jest && webpack -p --config webpack.config.js",
-    "test": "jest",
-    "test:watch": "npm test --watch"
+    "build": "webpack -p --config webpack.config.js"
   },
   "jest": {
     "verbose": true,
