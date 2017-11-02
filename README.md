@@ -5,19 +5,18 @@
 
 ## Spec
 - react
-- redux / react-redux
+- redux / react-redux / redux-saga
 - jest
 - chai/expect
 - webpack v2
 - ES6 / 7 (async,await)
 
-## Installation
+## Getting Started
 
 ```
 $ npm install
 ```
 
-## running
 ```
 // development ( Hot loader )
 $ npm start
@@ -28,3 +27,7 @@ $ npm run build
 // test
 $ npm run tests
 ```
+
+## Other Version
+
+- If you change to master branch, you can use the redux-thunk version.
