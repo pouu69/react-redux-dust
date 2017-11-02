@@ -1,7 +1,7 @@
 import { take, call, put, fork } from 'redux-saga/effects'
 import * as DustModule from './dust-saga';
 
-function* fetchDust(action){
+function* fetchDust(){
 	while(true){
 		try{
 			const action = yield take(DustModule.ActionTypes.REQUEST_FETCH_DUST);
