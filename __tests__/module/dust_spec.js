@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import chai, { expect as expectChai, assert} from 'chai' // You can use any testing library
+import chai, { expect as expectChai, assert} from 'chai'
 import 'whatwg-fetch';
 import * as Actions from '../../src/module/dust';
 import expect from 'expect';
@@ -29,6 +29,7 @@ describe('1. Redux Test', () => {
 	}
 
 	describe('1. Async Actions', () => {
+		// Given
 		let context = {
 			store : null,
 			action : null
