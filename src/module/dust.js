@@ -15,25 +15,25 @@ const initState = {
 }
 
 /* Action types */
-const START_FETCH_DUST   = 'dust/START_FETCH_DUST';
+const REQUEST_FETCH_DUST   = 'dust/REQUEST_FETCH_DUST';
 const SUCCESS_FETCH_DUST = 'dust/SUCCESS_FETCH_DUST';
 const FAILED_FETCH_DUST  = 'dust/FAILED_FETCH_DUST';
 
 export const ActionTypes = {
-	START_FETCH_DUST,
+	REQUEST_FETCH_DUST,
 	SUCCESS_FETCH_DUST,
 	FAILED_FETCH_DUST
 }
 
 
 /* Action creators */
-export const startFetchDust   = createAction(START_FETCH_DUST);
+export const requestFetchDust   = createAction(REQUEST_FETCH_DUST);
 export const successFetchDust = createAction(SUCCESS_FETCH_DUST);
 export const failedFetchDust  = createAction(FAILED_FETCH_DUST);
 
 /* Side effects */
 export const getDust = (region) => async (dispatch) => {
-	dispatch(startFetchDust());
+	dispatch(requestFetchDust());
 
 	try{
 		const response = await fetch(getApi(region), {
@@ -56,7 +56,7 @@ const getApi = (region) => `https://9z2zrff9fe.execute-api.ap-northeast-2.amazon
 
 /* reducers */
 export default handleActions({
-	[START_FETCH_DUST]: (state, action) => {
+	[REQUEST_FETCH_DUST]: (state, action) => {
 		return updateObj(state, {
 			pending: true,
 			failed: false,
