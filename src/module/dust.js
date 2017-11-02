@@ -1,5 +1,4 @@
 import { createAction, handleActions } from 'redux-actions';
-import dummy from '../data/dummy';
 
 /* initial state */
 const initState = {
